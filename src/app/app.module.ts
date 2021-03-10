@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ZipComponent } from './zip/zip.component';
+import { StateComponent } from './state/state.component';
+import { ScoresComponent } from './scores/scores.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ZipComponent,
+    StateComponent,
+    ScoresComponent
   ],
   imports: [
     BrowserModule,
