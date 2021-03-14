@@ -1,1 +1,30 @@
-<p>scores works!</p>
+<div class="container">
+    <div class="col-sm-7">
+    <h2>High Scores</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Score</th>
+                <th scope="col">Player</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let score of scores">
+                    <td>{{ score.score }}</td>
+                    <td>{{ score.playerName }}</td>
+                    <td>{{ score.gameTime }}</td>
+                    <td [hidden]="score.quizOptions.quizType !== 'zipCodeRadius'">
+                        {{score.quizOptions.zipCode}} - {{score.quizOptions.kmRadius}}Km ({{score.quizOptions.cityMatch}})
+                    </td>
+                    <td [hidden]="score.quizOptions.quizType !== 'entireState'">
+                        {{score.quizOptions.stateCode}}
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

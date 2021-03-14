@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MavenService } from '../maven.service';
+
+import { Game } from '../game';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-scores',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoresComponent implements OnInit {
 
-  constructor() { }
+  games: Game[] = [];
+
+  scores;
+
+  getGameSessions(): Observable<Game[]> {
+    return this.mavenService.getGames();
+  }
+
+  constructor(private mavenService: MavenService) { }
 
   ngOnInit(): void {
+    this.getGameSessions().subscribe(data => {
+      this.scores = data['scores'];
+    });
   }
 
 }
