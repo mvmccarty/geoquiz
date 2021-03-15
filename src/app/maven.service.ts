@@ -17,6 +17,7 @@ export class MavenService {
   private localhost = 'http://127.0.0.1:3000/api';
   private gamesApiUrl = this.localhost + '/getGameSessions';
   private zipCodeQueryApiUrl = this.localhost + '/getCitiesWithinZipCodeRadius';
+  private stateCodeQueryApiUrl = this.localhost + '/getCitiesWithinState';
 
   getGames(): Observable<Game[]> {
 
@@ -29,6 +30,13 @@ export class MavenService {
   getCitiesWithinZipCodeRadius(zipCode: String, kmRadius: String): Observable<any> {
 
     return this.http.post<any>(this.zipCodeQueryApiUrl, { 'zipCode' : zipCode, 'kmRadius' : kmRadius })
+      .pipe(
+        catchError(this.handleError('getCitiesWithinZipCodeRadius'))
+      );
+  }
+
+  getCitiesWithinState(stateCode: String): Observable<any> {
+    return this.http.post<any>(this.stateCodeQueryApiUrl, { 'stateCode' : stateCode })
       .pipe(
         catchError(this.handleError('getCitiesWithinZipCodeRadius'))
       );

@@ -4,10 +4,25 @@
         <div class="form-group">
           <h3>Entire State</h3>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="State Code">
+            <input type="text" class="form-control" name="state-code-query" placeholder="State Code" [(ngModel)]="stateCodeQuery">
           </div>
         </div>
-        <button type="button" class="btn btn-primary">Get Cities</button>
+        <button type="button" class="btn btn-primary" (click)="getCitiesInStateButton()">Get Cities</button>
       </form>  
+    </div>
+    <div [hidden]="!queryResult">
+      <div id="query-result-box">
+        <div>
+          <h1>{{queryResult?.stateCode}}</h1>
+        </div>
+        <div>
+          <h4>City Count: {{queryResult?.citiesCount}}</h4>
+          <ul>
+            <li *ngFor="let city of queryResult?.cities">
+              {{city}}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 </div>
