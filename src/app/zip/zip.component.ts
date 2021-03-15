@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { MavenService } from '../maven.service';
 
 @Component({
   selector: 'app-zip',
@@ -7,7 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ZipComponent implements OnInit {
 
-  constructor() { }
+  zipCodeQuery;
+  kmRadiusQuery;
+
+  queryResult;
+
+  getCitiesButton() {
+
+    this.submitQuery().subscribe(data => {
+      console.log(data);
+      this.queryResult = data;
+    });
+  }
+
+  submitQuery(): Observable<any[]> {
+    return this.mavenService.getCitiesWithinZipCodeRadius(this.zipCodeQuery, this.kmRadiusQuery)
+  }
+
+  constructor(private mavenService: MavenService) { }
 
   ngOnInit(): void {
   }

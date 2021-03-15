@@ -16,15 +16,25 @@ export class MavenService {
 
   private localhost = 'http://127.0.0.1:3000/api';
   private gamesApiUrl = this.localhost + '/getGameSessions';
+  private zipCodeQueryApiUrl = this.localhost + '/getCitiesWithinZipCodeRadius';
 
   getGames(): Observable<Game[]> {
-    
+
     return this.http.get<Game[]>(this.gamesApiUrl)
       .pipe(
         catchError(this.handleError<Game[]>('getGames', []))
       );
   }
 
+  getCitiesWithinZipCodeRadius(zipCode: String, kmRadius: String): Observable<any> {
+
+    return this.http.post<any>(this.zipCodeQueryApiUrl, { 'zipCode' : zipCode, 'kmRadius' : kmRadius })
+      .pipe(
+        catchError(this.handleError('getCitiesWithinZipCodeRadius'))
+      );
+
+  }
+  
 
   /**
  * Handle Http operation that failed.

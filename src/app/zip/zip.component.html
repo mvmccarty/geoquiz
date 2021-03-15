@@ -4,13 +4,30 @@
         <div class="form-group">
           <h3>Radius Within Zip Code</h3>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Zip Code">
+            <input type="text" name="zip-code-query" class="form-control" placeholder="Zip Code" [(ngModel)]="zipCodeQuery">
           </div>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="KM Radius">
+            <input type="text" name="km-radius-query" class="form-control" placeholder="KM Radius" [(ngModel)]="kmRadiusQuery">
           </div>
         </div>
-        <button type="button" class="btn btn-primary">Get Cities</button>
-      </form>  
+        <button type="button" class="btn btn-primary" (click)="getCitiesButton()">Get Cities</button>
+      </form>
+      <div [hidden]="!queryResult">
+        <div id="query-result-box">
+          <div>
+            <h3>{{queryResult?.zipCode}} - {{queryResult?.kmRadius}}Km</h3>
+            <h4><i>{{queryResult?.cityMatch}}</i></h4>
+          </div>
+          <div>
+            <h4>City Count: {{queryResult?.citiesCount}}</h4>
+            <ul>
+              <li *ngFor="let city of queryResult?.cities">
+                {{city}}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </div>
 </div>
