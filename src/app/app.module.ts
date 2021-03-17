@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ZipComponent } from './zip/zip.component';
 import { StateComponent } from './state/state.component';
 import { ScoresComponent } from './scores/scores.component';
+import { GameboardComponent } from './gameboard/gameboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ZipComponent,
     StateComponent,
-    ScoresComponent
+    ScoresComponent,
+    GameboardComponent
   ],
   imports: [
     BrowserModule,
