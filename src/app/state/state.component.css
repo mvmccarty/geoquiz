@@ -1,0 +1,8 @@
+#query-result-box {
+    padding : 1em;
+}
+
+#cities-result-box {
+    overflow: scroll;
+    height: 450px;
+}

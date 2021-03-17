@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-sm-4">
+    <div class="col-sm-12">
       <form>
         <div class="form-group">
           <h3>Entire State</h3>
@@ -9,20 +9,29 @@
         </div>
         <button type="button" class="btn btn-primary" (click)="getCitiesInStateButton()">Get Cities</button>
       </form>  
-    </div>
     <div [hidden]="!queryResult">
-      <div id="query-result-box">
-        <div>
-          <h1>{{queryResult?.stateCode}}</h1>
-        </div>
-        <div>
-          <h4>City Count: {{queryResult?.citiesCount}}</h4>
-          <ul>
-            <li *ngFor="let city of queryResult?.cities">
-              {{city}}
-            </li>
-          </ul>
+      <div class="container" id="query-result-box">
+        <div class="row">
+          <div class="col">
+            <div>
+              <h1>{{queryResult?.stateCode}}</h1>
+              <h4>City Count: {{queryResult?.citiesCount}}</h4>
+            </div>
+          </div>
+          <div class="col">
+            <div id="cities-result-box">
+              <table class="table table-striped">
+                <tbody>
+                  <tr *ngFor="let city of queryResult?.cities">
+                    <td>{{city}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>  
+          </div>
+          <div class="w-100"></div>
         </div>
       </div>
     </div>
+  </div>
 </div>

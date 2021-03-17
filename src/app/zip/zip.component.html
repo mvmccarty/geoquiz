@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-sm-7">
+    <div class="col-sm-12">
       <form>
         <div class="form-group">
           <h3>Radius Within Zip Code</h3>
@@ -12,8 +12,8 @@
         </div>
         <button type="button" class="btn btn-primary" (click)="getCitiesButton()">Get Cities</button>
       </form>
-      <div class="container" id="query-result-box" [hidden]="!queryResult">
-        <div class="container">
+      <div [hidden]="!queryResult">
+        <div class="container" id="query-result-box">
           <div class="row">
             <div class="col">
               <div>
@@ -23,12 +23,16 @@
               </div>
             </div>
             <div class="col">
-              <div>
-                <ul>
-                  <li *ngFor="let city of queryResult?.cities">
-                    {{city}}
-                  </li>
-                </ul>
+              <div id="cities-result-box">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr *ngFor="let city of queryResult?.cities">
+                      <td>
+                      {{city}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>  
             </div>
             <div class="w-100"></div>
