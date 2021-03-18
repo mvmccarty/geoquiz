@@ -18,7 +18,7 @@ export class ZipComponent implements OnInit {
   getCitiesButton() {
 
     this.submitQuery().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.queryResult = data;
     });
   }

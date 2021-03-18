@@ -1,1 +1,18 @@
-<p>gameboard works!</p>
+<div class="container">
+    <div class="col-sm-10">
+        <div class="jumbotron">
+            <div id="score-board">
+                <h2>{{ playerScore }}</h2>
+            </div>
+            <h1>{{ cities[citiesArrayCursor] }}</h1>
+            <div class="btn-group" role="group">
+                <button class="btn btn-outline-danger" (click)="gameFault()">Fault</button>
+                <button class="btn btn-outline-success" (click)="correctAnswer(cities[citiesArrayCursor])">Correct</button>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button class="btn btn-outline-primary">End Quiz</button>
+        </div>
+    </div>
+</div>
+

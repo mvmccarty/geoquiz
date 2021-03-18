@@ -14,9 +14,11 @@ export class StateComponent implements OnInit {
 
   queryResult;
 
+  gameIsRunning = false;
+
   getCitiesInStateButton() {
     this.submitQuery().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.queryResult = data;
     });
   }
@@ -27,7 +29,20 @@ export class StateComponent implements OnInit {
 
 
 
-  constructor(private mavenService: MavenService) { }
+  constructor(
+    private mavenService: MavenService
+    ) { }
+
+  shuffle(list) {
+    return list.reduce((p, n) => {
+      const size = p.length;
+      const index = Math.trunc(Math.random() * (size - 1));
+      p.splice(index, 0, n);
+      return p;
+    }, []);
+  };
+
+
 
   ngOnInit(): void {
   }

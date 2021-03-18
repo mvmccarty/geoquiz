@@ -1,8 +1,8 @@
-<div class="container">
+<div  [hidden]="gameIsRunning" class="container">
     <div class="col-sm-12">
+      <h1>Entire State</h1>
       <form>
         <div class="form-group">
-          <h3>Entire State</h3>
           <div class="input-group mb-3">
             <input type="text" class="form-control" name="state-code-query" placeholder="State Code" [(ngModel)]="stateCodeQuery">
           </div>
@@ -16,6 +16,7 @@
             <div>
               <h1>{{queryResult?.stateCode}}</h1>
               <h4>City Count: {{queryResult?.citiesCount}}</h4>
+              <button type="button" class="btn btn-warning" (click)="gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Load Cities</button>
             </div>
           </div>
           <div class="col">
@@ -35,3 +36,4 @@
     </div>
   </div>
 </div>
+<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities"></app-gameboard>
