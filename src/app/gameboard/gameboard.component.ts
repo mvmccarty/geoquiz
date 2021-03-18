@@ -20,9 +20,9 @@ export class GameboardComponent implements OnInit {
     this.gameLog.push(
       {
         'city' : city,
-        'gameResult' : 'correct',
+        'result' : 'correct',
         'points' : 5
-        // add timestamp here
+        // add seconds/time here
       }
     );
 
@@ -30,7 +30,32 @@ export class GameboardComponent implements OnInit {
     ++this.citiesArrayCursor;
   }
 
-  gameFault() {
+  gameFault(city) {
+
+    this.gameLog.push(
+      {
+        'city' : city,
+        'result' : 'fault',
+        'points' : 0
+        // add seconds/time here
+      }
+    );
+
+    ++this.citiesArrayCursor;
+  }
+
+  endQuiz(city) {
+
+    this.gameLog.push(
+      {
+        'city' : city,
+        'result' : 'in-progress',
+        'points' : 0
+        // add seconds/time here
+      }
+    );
+
+    
 
   }
 

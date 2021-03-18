@@ -1,4 +1,4 @@
-<div  [hidden]="gameIsRunning" class="container">
+<div [hidden]="gameIsRunning" class="container">
     <div class="col-sm-12">
       <h1>Entire State</h1>
       <form>
@@ -16,8 +16,9 @@
             <div>
               <h1>{{queryResult?.stateCode}}</h1>
               <h4>City Count: {{queryResult?.citiesCount}}</h4>
-              <button type="button" class="btn btn-warning" (click)="gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Load Cities</button>
-            </div>
+              <button [hidden]="nameEntryInProgress" type="button" class="btn btn-warning" (click)="nameEntryInProgress = true">Load Cities</button>
+              <input [hidden]="!nameEntryInProgress" type="text" name="player-name" class="form-control" placeholder="Player Name" [(ngModel)]="playerName">
+              <button [hidden]="!nameEntryInProgress" type="button" class="btn btn-success" (click)="nameEntryInProgress = false; gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Start</button>            </div>
           </div>
           <div class="col">
             <div id="cities-result-box">

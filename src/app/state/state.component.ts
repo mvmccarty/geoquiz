@@ -15,7 +15,9 @@ export class StateComponent implements OnInit {
   queryResult;
 
   gameIsRunning = false;
-
+  nameEntryInProgress = false;
+  playerName = "";
+  
   getCitiesInStateButton() {
     this.submitQuery().subscribe(data => {
       // console.log(data);
