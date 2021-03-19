@@ -1,4 +1,4 @@
-<div class="container">
+<div [hidden]="gameRecapInProgress" class="container">
     <div class="col-sm-10">
         <div class="jumbotron">
             <div id="score-board">
@@ -16,4 +16,4 @@
     </div>
 </div>
 
-<app-recap style="all: revert"></app-recap>
+<app-recap [hidden]="!gameRecapInProgress" [gameLog]="gameLog" style="all: revert"></app-recap>

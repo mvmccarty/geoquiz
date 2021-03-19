@@ -15,6 +15,8 @@ export class GameboardComponent implements OnInit {
   gameLog = [];
   playerScore = 0;
 
+  gameRecapInProgress = false;
+
   constructor() { }
 
   correctAnswer(city) {
@@ -56,6 +58,7 @@ export class GameboardComponent implements OnInit {
         // add seconds/time here
       }
     );
+    this.gameRecapInProgress = true;
   }
 
   returnGameLog(log: object) {

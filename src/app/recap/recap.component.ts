@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-recap',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recap.component.css']
 })
 export class RecapComponent implements OnInit {
+
+  @Input() gameLog: object;
 
   constructor() { }
 

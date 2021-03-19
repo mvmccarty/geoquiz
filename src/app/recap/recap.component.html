@@ -1,1 +1,10 @@
-<p>recap works!</p>
+<div>
+    <h1>Recap</h1>
+    <ul class="list-group">
+        <li *ngFor="let round of gameLog" class="list-group-item recap-item">
+            <p><b>{{round.city}}</b></p>
+            <p>{{round.result}} - {{round.points}}</p>
+        </li>
+    </ul>
+
+</div>
