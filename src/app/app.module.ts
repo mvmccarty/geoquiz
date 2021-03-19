@@ -9,6 +9,7 @@ import { ZipComponent } from './zip/zip.component';
 import { StateComponent } from './state/state.component';
 import { ScoresComponent } from './scores/scores.component';
 import { GameboardComponent } from './gameboard/gameboard.component';
+import { RecapComponent } from './recap/recap.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GameboardComponent } from './gameboard/gameboard.component';
     ZipComponent,
     StateComponent,
     ScoresComponent,
-    GameboardComponent
+    GameboardComponent,
+    RecapComponent
   ],
   imports: [
     BrowserModule,
