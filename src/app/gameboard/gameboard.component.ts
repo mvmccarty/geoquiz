@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class GameboardComponent implements OnInit {
 
   @Input() cities: object;
+  @Input() playerName: string;
+
   @Output() quizFinishEvent = new EventEmitter<object>();
 
 

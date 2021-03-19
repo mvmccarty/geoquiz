@@ -8,10 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecapComponent implements OnInit {
 
   @Input() gameLog: object;
+  @Input() playerScore: number;
+  @Input() playerName: string;
+
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

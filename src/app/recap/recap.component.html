@@ -1,8 +1,9 @@
 <div>
     <h1>Recap</h1>
+    <h3>{{playerName}} - {{playerScore}} points</h3>
     <ul class="list-group">
         <li *ngFor="let round of gameLog" class="list-group-item recap-item">
-            <p><b>{{round.city}}</b></p>
+            <p class="city-name-recap"><b>{{round.city}}</b></p>
             <p>{{round.result}} - {{round.points}}</p>
         </li>
     </ul>
