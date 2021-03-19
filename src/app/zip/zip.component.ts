@@ -31,6 +31,10 @@ export class ZipComponent implements OnInit {
     return this.mavenService.getCitiesWithinZipCodeRadius(this.zipCodeQuery, this.kmRadiusQuery)
   }
 
+  mergeGameLog(log) {
+    console.log(log);
+  }
+
   constructor(private mavenService: MavenService) { }
 
   shuffle(list) {

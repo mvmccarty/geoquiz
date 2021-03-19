@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-gameboard',
@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameboardComponent implements OnInit {
 
   @Input() cities: object;
+  @Output() quizFinishEvent = new EventEmitter<object>();
+
 
   citiesArrayCursor = 0;
   gameLog = [];
@@ -54,9 +56,10 @@ export class GameboardComponent implements OnInit {
         // add seconds/time here
       }
     );
+  }
 
-    
-
+  returnGameLog(log: object) {
+    this.quizFinishEvent.emit(log);
   }
 
 

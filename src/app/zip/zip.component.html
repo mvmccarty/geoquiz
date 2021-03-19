@@ -45,4 +45,4 @@
     </div>
 
 </div>
-<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities"></app-gameboard>
+<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities" (quizFinishEvent)="mergeGameLog($event)"></app-gameboard>

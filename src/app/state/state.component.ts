@@ -17,7 +17,7 @@ export class StateComponent implements OnInit {
   gameIsRunning = false;
   nameEntryInProgress = false;
   playerName = "";
-  
+
   getCitiesInStateButton() {
     this.submitQuery().subscribe(data => {
       // console.log(data);
@@ -27,6 +27,10 @@ export class StateComponent implements OnInit {
 
   submitQuery(): Observable<any[]> {
     return this.mavenService.getCitiesWithinState(this.stateCodeQuery)
+  }
+
+  mergeGameLog(log) {
+    console.log(log);
   }
 
 
