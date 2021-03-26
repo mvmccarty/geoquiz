@@ -16,8 +16,6 @@ export class ZipComponent implements OnInit {
   queryResult;
 
   gameIsRunning = false;
-  nameEntryInProgress = false;
-  playerName = "";
 
   getCitiesButton() {
 

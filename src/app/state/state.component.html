@@ -16,9 +16,8 @@
             <div>
               <h1>{{queryResult?.stateCode}}</h1>
               <h4>City Count: {{queryResult?.citiesCount}}</h4>
-              <button [hidden]="nameEntryInProgress" type="button" class="btn btn-warning" (click)="nameEntryInProgress = true">Load Cities</button>
-              <input [hidden]="!nameEntryInProgress" type="text" name="player-name" class="form-control" placeholder="Player Name" [(ngModel)]="playerName">
-              <button [hidden]="!nameEntryInProgress" type="button" class="btn btn-success" (click)="nameEntryInProgress = false; gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Start</button>            </div>
+              <button type="button" class="btn btn-warning" (click)="gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Load Cities</button>
+            </div>
           </div>
           <div class="col">
             <div id="cities-result-box">
@@ -37,4 +36,4 @@
     </div>
   </div>
 </div>
-<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities" [playerName]="playerName" (quizFinishEvent)="mergeGameLog($event)"></app-gameboard>
+<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities" (quizFinishEvent)="mergeGameLog($event)"></app-gameboard>

@@ -15,8 +15,6 @@ export class StateComponent implements OnInit {
   queryResult;
 
   gameIsRunning = false;
-  nameEntryInProgress = false;
-  playerName = "";
 
   getCitiesInStateButton() {
     this.submitQuery().subscribe(data => {
@@ -37,7 +35,7 @@ export class StateComponent implements OnInit {
 
   constructor(
     private mavenService: MavenService
-    ) { }
+  ) { }
 
   shuffle(list) {
     return list.reduce((p, n) => {

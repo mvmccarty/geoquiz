@@ -1,6 +1,6 @@
 <div [hidden]="gameIsRunning" class="container">
     <div class="col-sm-12">
-      <h1>Radius Within Zip Code</h1>
+      <h1>Radius From Zip Code</h1>
       <form>
         <div class="form-group">
           <div class="input-group mb-3">
@@ -20,9 +20,7 @@
                 <h3>{{queryResult?.zipCode}} - {{queryResult?.kmRadius}}Km</h3>
                 <h4><i>{{queryResult?.cityMatch}}</i></h4>
                 <h4>City Count: {{queryResult?.citiesCount}}</h4>
-                <button [hidden]="nameEntryInProgress" type="button" class="btn btn-warning" (click)="nameEntryInProgress = true">Load Cities</button>
-                <input [hidden]="!nameEntryInProgress" type="text" name="player-name" class="form-control" placeholder="Player Name" [(ngModel)]="playerName">
-                <button [hidden]="!nameEntryInProgress" type="button" class="btn btn-success" (click)="nameEntryInProgress = false; gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Start</button>
+                <button type="button" class="btn btn-warning" (click)="gameIsRunning = true; queryResult.cities = shuffle(queryResult.cities)">Load Cities</button>
               </div>
             </div>
             <div class="col">
@@ -45,4 +43,4 @@
     </div>
 
 </div>
-<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities" [playerName]="playerName" (quizFinishEvent)="mergeGameLog($event)"></app-gameboard>
+<app-gameboard [hidden]="!gameIsRunning" [cities]="queryResult?.cities" (quizFinishEvent)="mergeGameLog($event)"></app-gameboard>

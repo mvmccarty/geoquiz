@@ -1,4 +1,9 @@
-<div [hidden]="gameRecapInProgress" class="container">
+<div [hidden]="!nameEntryInProgress">
+    <input type="text" name="player-name" class="form-control" placeholder="Player Name" [(ngModel)]="playerName">
+    <button type="button" class="btn btn-success" (click)="nameEntryInProgress = false; startTimer();">Start</button>
+</div>
+
+<div  *ngIf="!(gameRecapInProgress || nameEntryInProgress)" class="container">
     <div class="col-sm-10">
         <div class="jumbotron">
             <div id="score-board">
@@ -14,6 +19,7 @@
             <button class="btn btn-outline-primary" (click)="endQuiz(cities[citiesArrayCursor]);returnGameLog(gameLog)">End Quiz</button>
         </div>
     </div>
+    <div><p>{{ timeLeft }}</p></div>
 </div>
 
 <app-recap [hidden]="!gameRecapInProgress" [gameLog]="gameLog" [playerScore]="playerScore" [playerName]="playerName" style="all: revert"></app-recap>

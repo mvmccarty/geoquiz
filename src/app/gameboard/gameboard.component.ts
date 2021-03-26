@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { timer } from 'rxjs';
+
 
 @Component({
   selector: 'app-gameboard',
@@ -8,18 +10,48 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class GameboardComponent implements OnInit {
 
   @Input() cities: object;
-  @Input() playerName: string;
 
   @Output() quizFinishEvent = new EventEmitter<object>();
 
+  playerName = "";
 
   citiesArrayCursor = 0;
   gameLog = [];
   playerScore = 0;
 
+  timeLeft: number = 60;
+  interval;
+  subscribeTimer: any;
+
+  nameEntryInProgress = true;
   gameRecapInProgress = false;
 
   constructor() { }
+
+  oberserableTimer() {
+    const source = timer(1000, 2000);
+    const abc = source.subscribe(val => {
+      console.log(val, '-');
+      this.subscribeTimer = this.timeLeft - val;
+    });
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        // this.timeLeft = 60;
+        clearInterval(this.interval);
+        this.endQuiz(this.cities[this.citiesArrayCursor]);
+        this.returnGameLog(this.gameLog);
+      }
+    },1000)
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
+  }
 
   correctAnswer(city) {
 
@@ -68,9 +100,9 @@ export class GameboardComponent implements OnInit {
   }
 
 
+
   ngOnInit(): void {
-
-
+    // this.startTimer();
   }
 
 }
