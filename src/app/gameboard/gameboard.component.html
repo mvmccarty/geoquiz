@@ -1,4 +1,4 @@
-<div [hidden]="!nameEntryInProgress">
+<div id="name-entry" [hidden]="!nameEntryInProgress">
     <input type="text" name="player-name" class="form-control" placeholder="Player Name" [(ngModel)]="playerName">
     <button type="button" class="btn btn-success" (click)="nameEntryInProgress = false; startTimer();">Start</button>
 </div>
@@ -12,12 +12,14 @@
             <h1 id="city-stage">{{ cities[citiesArrayCursor] }}</h1>
             <div class="btn-group" role="group">
                 <button class="btn btn-outline-danger" (click)="gameFault(cities[citiesArrayCursor])">Fault</button>
-                <button class="btn btn-outline-success" (click)="correctAnswer(cities[citiesArrayCursor])">Correct</button>
+                <button class="btn btn-outline-success" (click)="correctAnswer(cities[citiesArrayCursor]); playDing()">Correct</button>
             </div>
         </div>
+        
         <div class="btn-group" role="group">
             <button class="btn btn-outline-primary" (click)="endQuiz(cities[citiesArrayCursor]);returnGameLog(gameLog)">End Quiz</button>
         </div>
+        
     </div>
     <div><p>{{ formatTimeLeft(timeLeft) }}</p></div>
 </div>

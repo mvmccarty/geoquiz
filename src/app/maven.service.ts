@@ -18,6 +18,7 @@ export class MavenService {
   private gamesApiUrl = this.localhost + '/getGameSessions';
   private zipCodeQueryApiUrl = this.localhost + '/getCitiesWithinZipCodeRadius';
   private stateCodeQueryApiUrl = this.localhost + '/getCitiesWithinState';
+  private postGameSessionApiUrl = this.localhost + '/postGameSession';
 
   getGames(): Observable<Game[]> {
 
@@ -43,6 +44,13 @@ export class MavenService {
 
   }
   
+  postGameSession(): Observable<any> {
+    return this.http.post<any>(this.postGameSessionApiUrl, {})
+      .pipe(
+        catchError(this.handleError('postGameSession'))
+      );
+  }
+
 
   /**
  * Handle Http operation that failed.

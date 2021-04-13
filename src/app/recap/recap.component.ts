@@ -11,6 +11,10 @@ export class RecapComponent implements OnInit {
   @Input() playerScore: number;
   @Input() playerName: string;
 
+  returnGoogleHref(cityName) {
+    return "http://www.google.com/"
+  }
+
 
   constructor() { }
 

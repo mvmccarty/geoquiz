@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { timer } from 'rxjs';
 
+import { MavenService } from '../maven.service';
+
 
 @Component({
   selector: 'app-gameboard',
@@ -26,7 +28,9 @@ export class GameboardComponent implements OnInit {
   nameEntryInProgress = true;
   gameRecapInProgress = false;
 
-  constructor() { }
+  constructor(
+    private mavenService: MavenService
+  ) { }
 
   oberserableTimer() {
     const source = timer(1000, 2000);
@@ -100,16 +104,24 @@ export class GameboardComponent implements OnInit {
   }
 
   endQuiz(city) {
+    if (!this.gameRecapInProgress) {
+      this.gameLog.push(
+        {
+          'city' : city,
+          'result' : 'in-progress',
+          'points' : 0
+          // add seconds/time here
+        }
+      );
+      this.gameRecapInProgress = true;
+    }
+  }
 
-    this.gameLog.push(
-      {
-        'city' : city,
-        'result' : 'in-progress',
-        'points' : 0
-        // add seconds/time here
-      }
-    );
-    this.gameRecapInProgress = true;
+  playDing() {
+    let audio = new Audio();
+    audio.src = "../../../assets/sounds/ding.wav";
+    audio.load();
+    audio.play();
   }
 
   returnGameLog(log: object) {
