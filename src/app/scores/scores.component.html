@@ -8,12 +8,13 @@
                 <th scope="col">Player</th>
                 <th scope="col">Date</th>
                 <th scope="col"></th>
+                <th scope="col">Cities</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let score of scores">
                     <td>{{ score.score }}</td>
-                    <td>{{ score.playerName }}</td>
+                    <td><strong>{{ score.playerName }}</strong></td>
                     <td>{{ score.gameTime }}</td>
                     <td [hidden]="score.quizOptions.quizType !== 'zipCodeRadius'">
                         {{score.quizOptions.zipCode}} - {{score.quizOptions.kmRadius}}Km ({{score.quizOptions.cityMatch}})
@@ -21,7 +22,7 @@
                     <td [hidden]="score.quizOptions.quizType !== 'entireState'">
                         {{score.quizOptions.stateCode}}
                     </td>
-                    <td></td>
+                    <td>{{score.citiesCount}}</td>
                 </tr>
             </tbody>
 
