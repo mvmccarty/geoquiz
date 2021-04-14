@@ -43,6 +43,9 @@ export class GameboardComponent implements OnInit {
   startTimer() {
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
+        if (this.timeLeft == 4) {
+          this.playSound('countdown.wav');
+        }
         this.timeLeft--;
       } else {
         // this.timeLeft = 60;
@@ -75,7 +78,7 @@ export class GameboardComponent implements OnInit {
   }
 
   correctAnswer(city) {
-
+    this.playSound('ding.wav');
     this.gameLog.push(
       {
         'city' : city,
@@ -90,7 +93,7 @@ export class GameboardComponent implements OnInit {
   }
 
   gameFault(city) {
-
+    this.playSound('buzzer.wav')
     this.gameLog.push(
       {
         'city' : city,
@@ -117,9 +120,9 @@ export class GameboardComponent implements OnInit {
     }
   }
 
-  playDing() {
+  playSound(fileName) {
     let audio = new Audio();
-    audio.src = "../../../assets/sounds/ding.wav";
+    audio.src = "../../../assets/sounds/" + fileName;
     audio.load();
     audio.play();
   }
