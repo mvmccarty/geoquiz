@@ -16,6 +16,11 @@ export class ZipComponent implements OnInit {
   queryResult;
 
   gameIsRunning = false;
+  quizInfo = {
+    "quizType" : "zipCodeRadius",
+  };
+    
+
 
   getCitiesButton() {
 
@@ -23,6 +28,7 @@ export class ZipComponent implements OnInit {
       // console.log(data);
       this.queryResult = data;
     });
+
   }
 
   submitQuery(): Observable<any[]> {
@@ -30,8 +36,21 @@ export class ZipComponent implements OnInit {
   }
 
   mergeGameLog(log) {
-    console.log(log);
+    // console.log(log);
   }
+
+  loadGame() {
+
+    this.gameIsRunning = true;
+    this.queryResult.cities = this.shuffle(this.queryResult.cities)
+
+    this.quizInfo['zipCode'] = this.queryResult.zipCode;
+    this.quizInfo['kmRadius'] = this.queryResult.kmRadius;
+    this.quizInfo['cityMatch'] = this.queryResult.cityMatch;
+
+  }
+
+
 
   constructor(private mavenService: MavenService) { }
 

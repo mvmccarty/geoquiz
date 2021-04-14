@@ -12,6 +12,8 @@ import { MavenService } from '../maven.service';
 export class GameboardComponent implements OnInit {
 
   @Input() cities: object;
+  @Input() quizInfo: object;
+
 
   @Output() quizFinishEvent = new EventEmitter<object>();
 
@@ -21,7 +23,8 @@ export class GameboardComponent implements OnInit {
   gameLog = [];
   playerScore = 0;
 
-  timeLeft: number = 180;
+  totalAllotedTime = 180;
+  timeLeft: number = this.totalAllotedTime;
   interval;
   subscribeTimer: any;
 
@@ -117,6 +120,18 @@ export class GameboardComponent implements OnInit {
         }
       );
       this.gameRecapInProgress = true;
+
+      let gameSessionObject = {
+        "playerName" : this.playerName,
+        "citiesCount" : Object.values(this.cities).length,
+        "gameTime" : new Date().toLocaleDateString(),
+        "rounds" : this.gameLog,
+        "score" : this.playerScore,
+        "quizMinutes" : this.totalAllotedTime / 60
+      };
+
+      console.log({...this.quizInfo,...gameSessionObject});
+
     }
   }
 

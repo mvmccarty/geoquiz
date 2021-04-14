@@ -15,6 +15,9 @@ export class StateComponent implements OnInit {
   queryResult;
 
   gameIsRunning = false;
+  quizInfo = {
+    "quizType" : "entireState"
+  };
 
   getCitiesInStateButton() {
     this.submitQuery().subscribe(data => {
@@ -28,9 +31,16 @@ export class StateComponent implements OnInit {
   }
 
   mergeGameLog(log) {
-    console.log(log);
+    // console.log(log);
   }
 
+  loadGame() {
+    this.gameIsRunning = true;
+    this.queryResult.cities = this.shuffle(this.queryResult.cities);
+
+    this.quizInfo['stateCode'] = this.queryResult.stateCode
+
+  }
 
 
   constructor(
