@@ -44,8 +44,8 @@ export class MavenService {
 
   }
   
-  postGameSession(): Observable<any> {
-    return this.http.post<any>(this.postGameSessionApiUrl, {})
+  postGameSession(gameInfo: object): Observable<any> {
+    return this.http.post<any>(this.postGameSessionApiUrl, gameInfo)
       .pipe(
         catchError(this.handleError('postGameSession'))
       );

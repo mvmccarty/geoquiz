@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { timer } from 'rxjs';
+import { timer, Observable } from 'rxjs';
+
 
 import { MavenService } from '../maven.service';
 
@@ -127,13 +128,23 @@ export class GameboardComponent implements OnInit {
         "gameTime" : new Date().toLocaleDateString(),
         "rounds" : this.gameLog,
         "score" : this.playerScore,
-        "quizMinutes" : this.totalAllotedTime / 60
+        "quizMinutes" : this.totalAllotedTime / 60,
+        "gameOptions" : this.quizInfo
       };
 
-      console.log({...this.quizInfo,...gameSessionObject});
+      // console.log();
+
+      this.postGameSession(gameSessionObject).subscribe(data => {
+        console.log("added to high scores.");
+      });
 
     }
   }
+
+  postGameSession(session): Observable<any[]> {
+    return this.mavenService.postGameSession(session)
+  }
+
 
   playSound(fileName) {
     let audio = new Audio();
