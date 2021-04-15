@@ -4,3 +4,8 @@
 .city-name-recap {
     font-size: 25px;
 }
+
+h2.seconds {
+    float: left;
+    color: green;
+}

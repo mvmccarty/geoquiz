@@ -25,6 +25,7 @@ export class GameboardComponent implements OnInit {
   playerScore = 0;
 
   totalAllotedTime = 180;
+  roundTimeInSeconds = 0;
   timeLeft: number = this.totalAllotedTime;
   interval;
   subscribeTimer: any;
@@ -51,6 +52,7 @@ export class GameboardComponent implements OnInit {
           this.playSound('countdown.wav');
         }
         this.timeLeft--;
+        this.roundTimeInSeconds++;
       } else {
         // this.timeLeft = 60;
         clearInterval(this.interval);
@@ -87,12 +89,13 @@ export class GameboardComponent implements OnInit {
       {
         'city' : city,
         'result' : 'correct',
-        'points' : 5
-        // add seconds/time here
+        'points' : 5,
+        'seconds' : this.roundTimeInSeconds
       }
     );
 
     this.playerScore+=5
+    this.roundTimeInSeconds = 0;
     ++this.citiesArrayCursor;
   }
 
@@ -102,11 +105,12 @@ export class GameboardComponent implements OnInit {
       {
         'city' : city,
         'result' : 'fault',
-        'points' : 0
-        // add seconds/time here
+        'points' : 0,
+        'seconds' : this.roundTimeInSeconds
       }
     );
 
+    this.roundTimeInSeconds = 0;
     ++this.citiesArrayCursor;
   }
 
@@ -116,8 +120,8 @@ export class GameboardComponent implements OnInit {
         {
           'city' : city,
           'result' : 'in-progress',
-          'points' : 0
-          // add seconds/time here
+          'points' : 0,
+          'seconds' : this.roundTimeInSeconds
         }
       );
       this.gameRecapInProgress = true;
