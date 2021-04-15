@@ -1,3 +1,6 @@
 .nav-item, .navbar-brand {
     margin-left: 2em;
 }
+* {
+    background-color: aliceblue;
+}

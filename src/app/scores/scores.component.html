@@ -4,6 +4,7 @@
         <table class="table">
             <thead>
                 <tr>
+                <th scope="col">Rank</th>
                 <th scope="col">Score</th>
                 <th scope="col">Player</th>
                 <th scope="col">Date</th>
@@ -12,7 +13,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let score of scores">
+                <tr *ngFor="let score of scores; let i = index">
+                    <td>{{i+1}}</td>
                     <td>{{ score.score }}</td>
                     <td><strong>{{ score.playerName }}</strong></td>
                     <td>{{ score.gameTime }}</td>
