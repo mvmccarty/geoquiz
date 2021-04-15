@@ -46,6 +46,9 @@ export class GameboardComponent implements OnInit {
   }
 
   startTimer() {
+
+    this.playSound('drum.wav');
+
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         if (this.timeLeft == 4) {
