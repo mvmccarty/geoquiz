@@ -5,8 +5,10 @@ import { ScoresComponent } from './scores/scores.component';
 import { StateComponent } from './state/state.component';
 import { ZipComponent } from './zip/zip.component';
 import { RecapComponent } from './recap/recap.component';
+import { DemoComponent } from './demo/demo.component';
 
 const routes: Routes = [
+  { path: 'demo-component', component: DemoComponent },
   { path: 'zip-component', component: ZipComponent },
   { path: 'state-component', component: StateComponent },
   { path: 'scores-component', component: ScoresComponent },

@@ -10,6 +10,7 @@ import { StateComponent } from './state/state.component';
 import { ScoresComponent } from './scores/scores.component';
 import { GameboardComponent } from './gameboard/gameboard.component';
 import { RecapComponent } from './recap/recap.component';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RecapComponent } from './recap/recap.component';
     StateComponent,
     ScoresComponent,
     GameboardComponent,
-    RecapComponent
+    RecapComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="col-sm-10">
+        <div class="jumbotron">
+            <div id="score-board">
+                <h2>{{ playerScore }}</h2>
+            </div>
+            <h1 id="city-stage">Bear Grass, NC</h1>
+            <div class="btn-group" role="group">
+                <button class="btn btn-outline-danger" (click)="playSound('buzzer.wav')">Fault</button>
+                <button class="btn btn-outline-success" (click)="playSound('ding.wav')">Correct</button>
+            </div>
+        </div>
+    </div>
+    <div><p>{{ formatTimeLeft(timeLeft) }}</p></div>
+</div>

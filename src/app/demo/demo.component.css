@@ -1,0 +1,17 @@
+* {
+    text-align: center;
+    font-size: 40px;
+}
+#city-stage {
+    font-size: 80px;
+    height: 290px;
+}
+#score-board {
+    color: seashell;
+    background-color: black;
+    font-size: 110px;
+    border-radius: 4em;
+}
+#name-entry {
+    padding-top: 20%;
+}
