@@ -20,8 +20,8 @@
             <button class="btn btn-outline-primary" (click)="endQuiz(cities[citiesArrayCursor]);returnGameLog(gameLog)">End Quiz</button>
         </div>
         -->
+        <div><p>{{ formatTimeLeft(timeLeft) }}</p></div>
     </div>
-    <div><p>{{ formatTimeLeft(timeLeft) }}</p></div>
 </div>
 
 <app-recap [hidden]="!gameRecapInProgress" [gameLog]="gameLog" [playerScore]="playerScore" [playerName]="playerName" style="all: revert"></app-recap>
